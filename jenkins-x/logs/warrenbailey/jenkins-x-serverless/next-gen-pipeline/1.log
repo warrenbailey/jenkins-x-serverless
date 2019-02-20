@@ -1,18 +1,18 @@
 Step: build-step-credential-initializer:
 
-{"level":"warn","ts":1550658193.1380503,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/test\" is not a valid GitHub commit ID"}
-{"level":"info","ts":1550658193.1390636,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+{"level":"warn","ts":1550659346.381415,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/test\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1550659346.3818119,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
 Step: build-step-git-source-workspace:
 
-{"level":"warn","ts":1550658196.5621052,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/test\" is not a valid GitHub commit ID"}
-{"level":"info","ts":1550658197.4514186,"logger":"fallback-logger","caller":"git-init/main.go:92","msg":"Successfully cloned \"https://github.com/warrenbailey/jenkins-x-serverless\" @ \"master\" in path \"/workspace/workspace\""}
+{"level":"warn","ts":1550659348.927348,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/test\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1550659349.8235793,"logger":"fallback-logger","caller":"git-init/main.go:92","msg":"Successfully cloned \"https://github.com/warrenbailey/jenkins-x-serverless\" @ \"master\" in path \"/workspace/workspace\""}
 Step: build-step-place-tools:
 
 Step: build-step-step2:
 
-created new version: 256.0.99 and written to file: ./VERSION
-Tag v256.0.99 created and pushed to remote origin
+created new version: 256.0.100 and written to file: ./VERSION
+Tag v256.0.100 created and pushed to remote origin
 Step: build-step-artifact-copy-to-warrenbailey-jenkins-x-serverless-n:
 
-{"level":"warn","ts":1550658226.144326,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
-{"level":"fatal","ts":1550658227.6059084,"logger":"fallback-logger","caller":"gsutil/main.go:94","msg":"Error executing command \"gsutil cp -r /workspace/workspace /warrenbailey-jenkins-x-serverless-n-1-jx-bucket/next-version/workspace\" ; error exit status 1; cmd_output CommandException: Destination URL must name a directory, bucket, or bucket\nsubdirectory for the multiple source form of the cp command.\n","stacktrace":"main.main\n\t/go/src/github.com/knative/build-pipeline/cmd/gsutil/main.go:94\nruntime.main\n\t/usr/local/go/src/runtime/proc.go:201"}
+{"level":"warn","ts":1550659377.9828882,"logger":"fallback-logger","caller":"logging/config.go:65","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"fatal","ts":1550659379.4608662,"logger":"fallback-logger","caller":"gsutil/main.go:94","msg":"Error executing command \"gsutil cp -r /workspace/workspace /warrenbailey-jenkins-x-serverless-n-1-jx-bucket/next-version/workspace\" ; error exit status 1; cmd_output CommandException: Destination URL must name a directory, bucket, or bucket\nsubdirectory for the multiple source form of the cp command.\n","stacktrace":"main.main\n\t/go/src/github.com/knative/build-pipeline/cmd/gsutil/main.go:94\nruntime.main\n\t/usr/local/go/src/runtime/proc.go:201"}
