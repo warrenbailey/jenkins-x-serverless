@@ -12,11 +12,20 @@ pipelineConfig:
               - name: GIT_AUTHOR_EMAIL
                 value: jenkins-x@googlegroups.com
               - name: GIT_AUTHOR_NAME
-                value: jenkins-x-bot
+                value: jenkins-x-bot-test
               - name: GIT_COMMITTER_NAME
-                value: jenkins-x-bot
+                value: jenkins-x-bot-test
             steps:
               - agent:
                   image: rawlingsj/jx:dev136
-                command: sh
-                args: ["-c","cd workspace && jx step next-version -t --use-git-tag-only"]
+                command: jx
+                args:
+                  - step
+                  - next-version
+                  - -t
+                  - --use-git-tag-only
+          - name: replace-versions
+            steps:
+              - agent:
+                  image: centos:7
+                command: ./replace-versions.sh
