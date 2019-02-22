@@ -24,14 +24,27 @@ pipelineConfig:
                   - next-version
                   - -t
                   - --use-git-tag-only
+          - name: list
+            steps:
+              - agent:
+                  image: centos:7
+                command: ls
+                args:
+                  - -la
           - name: replace-versions
             steps:
               - agent:
                   image: centos:7
-                command: ./replace-versions.sh
+                command: ./workspace/source/replace-versions.sh
           - name: build-and-push-base
             steps:
               - agent:
                   image: rawlingsj/executor:dev21
                 command: /bin/bash
                 args: ['-c','/kaniko/executor --dockerfile=/workspace/source/Dockerfile.base --destination=docker.io/warrenbailey/jenkins-base:$(cat /workspace/source/VERSION) --context=/workspace/source/jenkins-base --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/ --cache=true --cache-dir=/workspace --skip-tls-verify-registry=jenkins-x-docker-registry.jx.svc.cluster.local:5000']
+          - name: build-and-push-maven
+            steps:
+              - agent:
+                  image: rawlingsj/executor:dev21
+                command: /bin/bash
+                args: ['-c','/kaniko/executor --dockerfile=/workspace/source/Dockerfile.maven --destination=docker.io/warrenbailey/jenkins-maven:$(cat /workspace/source/VERSION) --context=/workspace/source/jenkins-maven --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/ --cache=true --cache-dir=/workspace --skip-tls-verify-registry=jenkins-x-docker-registry.jx.svc.cluster.local:5000']
