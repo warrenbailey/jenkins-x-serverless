@@ -29,3 +29,9 @@ pipelineConfig:
               - agent:
                   image: centos:7
                 command: ./replace-versions.sh
+          - name: build-and-push-base
+            steps:
+              - agent:
+                  image: rawlingsj/executor:dev21
+                command: /bin/bash
+                args: ['-c','/kaniko/executor --dockerfile=/workspace/source/Dockerfile.base --destination=docker.io/warrenbailey/jenkins-base:$(cat /workspace/source/VERSION) --context=/workspace/source/jenkins-base --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/ --cache=true --cache-dir=/workspace --skip-tls-verify-registry=jenkins-x-docker-registry.jx.svc.cluster.local:5000']
