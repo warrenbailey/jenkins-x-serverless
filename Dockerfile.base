@@ -1,5 +1,7 @@
 FROM jenkinsxio/jenkins-filerunner:0.1.4
 
+RUN sudo dpkg --configure -a
+
 RUN apt-get update && apt-get install -y --allow-unauthenticated \
   wget \
   bzip2 \
