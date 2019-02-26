@@ -61,13 +61,13 @@ pipelineConfig:
 #                    - --cache=true
 #                    - --cache-dir=/workspace
 #                    - --skip-tls-verify-registry=jenkins-x-docker-registry.jx.svc.cluster.local:5000
-          - name: warm-cache
-            steps:
-                - command: /kaniko/warmer
-                  args:
-                    - --cache-dir=/workspace
-                    - --image=docker.io/warrenbailey/jenkins-base
-          - name: build-and-push-maven
-            steps:
-                - command: "/bin/bash"
-                  args: ['-c','/kaniko/executor --dockerfile=Dockerfile.maven --destination=docker.io/warrenbailey/jenkins-maven:$(cat VERSION) --context=jenkins-base--cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/ --cache=true --cache-dir=/workspace --skip-tls-verify-registry=jenkins-x-docker-registry.jx.svc.cluster.local:5000']
+#          - name: warm-cache
+#            steps:
+#                - command: /kaniko/warmer
+#                  args:
+#                    - --cache-dir=/workspace
+#                    - --image=docker.io/warrenbailey/jenkins-base
+#          - name: build-and-push-maven
+#            steps:
+#                - command: "/bin/bash"
+#                  args: ['-c','/kaniko/executor --dockerfile=Dockerfile.maven --destination=docker.io/warrenbailey/jenkins-maven:$(cat VERSION) --context=jenkins-base--cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/ --cache=true --cache-dir=/workspace --skip-tls-verify-registry=jenkins-x-docker-registry.jx.svc.cluster.local:5000']
