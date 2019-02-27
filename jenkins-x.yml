@@ -1,4 +1,5 @@
 pipelineConfig:
+  buildPack: none
   pipelines:
     release:
       pipeline:
@@ -44,7 +45,7 @@ pipelineConfig:
                 command: /kaniko/executor
                 args:
                   - --dockerfile=Dockerfile.base
-                  - --destination=docker.io/warrenbailey/jenkins-base:${inputs.params.preview_version}
+                  - --destination=docker.io/warrenbailey/jenkins-base:${inputs.params.version}
                   - --context=jenkins-base
                   - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000
                   - --cache=true
