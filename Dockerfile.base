@@ -1,6 +1,8 @@
 FROM jenkinsxio/jenkins-filerunner:0.1.4
 
-RUN apt-get update && apt-get install -y --allow-unauthenticated -f \
+RUN apt-get update
+
+RUN apt-get install -y --allow-unauthenticated -f \
   wget \
   bzip2 \
   python-pip \
