@@ -1,5 +1,5 @@
 pipelineConfig:
-  buildPack: none
+#  buildPack: none
   pipelines:
     release:
       pipeline:
