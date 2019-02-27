@@ -48,7 +48,7 @@ pipelineConfig:
                   - --dockerfile=Dockerfile.base
                   - --destination=docker.io/warrenbailey/jenkins-base:${inputs.params.version}
                   - --context=jenkins-base
-                  - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000
+                  - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                   - --cache=true
                   - --cache-dir=/workspace
                   - --skip-tls-verify-registry=jenkins-x-docker-registry.jx.svc.cluster.local:5000
