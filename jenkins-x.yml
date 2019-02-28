@@ -14,7 +14,7 @@ pipelineConfig:
                 args:
                   - --dockerfile=Dockerfile.base
                   - --destination=docker.io/warrenbailey/jenkins-base:${inputs.params.version}
-                  - --context=jenkins-base
+                  - --context=/workspace/workspace
                   - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                   - --cache=true
                   - --cache-dir=/workspace
@@ -37,7 +37,7 @@ pipelineConfig:
                     args:
                       - --dockerfile=Dockerfile.csharp
                       - --destination=docker.io/warrenbailey/jenkins-csharp:${inputs.params.version}
-                      - --context=jenkins-csharp
+                      - --context=/workspace/workspace
                       - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                       - --cache=true
                       - --cache-dir=/workspace
@@ -50,7 +50,7 @@ pipelineConfig:
                     args:
                       - --dockerfile=Dockerfile.cwp
                       - --destination=docker.io/warrenbailey/jenkins-cwp:${inputs.params.version}
-                      - --context=jenkins-cwp
+                      - --context=/workspace/workspace
                       - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                       - --cache=true
                       - --cache-dir=/workspace
@@ -63,7 +63,7 @@ pipelineConfig:
                     args:
                       - --dockerfile=Dockerfile.elixir
                       - --destination=docker.io/warrenbailey/jenkins-elixir:${inputs.params.version}
-                      - --context=jenkins-elixir
+                      - --context=/workspace/workspace
                       - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                       - --cache=true
                       - --cache-dir=/workspace
@@ -76,7 +76,7 @@ pipelineConfig:
                     args:
                       - --dockerfile=Dockerfile.go
                       - --destination=docker.io/warrenbailey/jenkins-go:${inputs.params.version}
-                      - --context=jenkins-go
+                      - --context=/workspace/workspace
                       - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                       - --cache=true
                       - --cache-dir=/workspace
@@ -89,24 +89,24 @@ pipelineConfig:
                     args:
                       - --dockerfile=Dockerfile.gradle
                       - --destination=docker.io/warrenbailey/jenkins-gradle:${inputs.params.version}
-                      - --context=jenkins-gradle
+                      - --context=/workspace/workspace
                       - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                       - --cache=true
                       - --cache-dir=/workspace
                       - --skip-tls-verify-registry=jenkins-x-docker-registry.jx.svc.cluster.local:5000
-              #              - name: build-and-push-javascript
-              #                steps:
-              #                    - agent:
-              #                      image: rawlingsj/executor:dev40
-              #                      command: /kaniko/executor
-              #                      args:
-              #                        - --dockerfile=Dockerfile.javascript
-              #                        - --destination=docker.io/warrenbailey/jenkins-javascript:${inputs.params.version}
-              #                        - --context=jenkins-javascript
-              #                        - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
-              #                        - --cache=true
-              #                        - --cache-dir=/workspace
-              #                        - --skip-tls-verify-registry=jenkins-x-docker-registry.jx.svc.cluster.local:5000
+              - name: build-and-push-javascript
+                steps:
+                    - agent:
+                      image: rawlingsj/executor:dev40
+                      command: /kaniko/executor
+                      args:
+                        - --dockerfile=Dockerfile.javascript
+                        - --destination=docker.io/warrenbailey/jenkins-javascript:${inputs.params.version}
+                        - --context=/workspace/workspace
+                        - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
+                        - --cache=true
+                        - --cache-dir=/workspace
+                        - --skip-tls-verify-registry=jenkins-x-docker-registry.jx.svc.cluster.local:5000
               - name: build-and-push-jenkins
                 steps:
                   - agent:
@@ -115,7 +115,7 @@ pipelineConfig:
                     args:
                       - --dockerfile=Dockerfile.jenkins
                       - --destination=docker.io/warrenbailey/jenkins-jenkins:${inputs.params.version}
-                      - --context=jenkins-jenkins
+                      - --context=/workspace/workspace
                       - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                       - --cache=true
                       - --cache-dir=/workspace
@@ -128,7 +128,7 @@ pipelineConfig:
                     args:
                       - --dockerfile=Dockerfile.maven
                       - --destination=docker.io/warrenbailey/jenkins-maven:${inputs.params.version}
-                      - --context=jenkins-maven
+                      - --context=/workspace/workspace
                       - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                       - --cache=true
                       - --cache-dir=/workspace
@@ -141,7 +141,7 @@ pipelineConfig:
                     args:
                       - --dockerfile=Dockerfile.maven-java11
                       - --destination=docker.io/warrenbailey/jenkins-maven-java11:${inputs.params.version}
-                      - --context=jenkins-maven-java11
+                      - --context=/workspace/workspace
                       - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                       - --cache=true
                       - --cache-dir=/workspace
@@ -154,7 +154,7 @@ pipelineConfig:
                     args:
                       - --dockerfile=Dockerfile.python
                       - --destination=docker.io/warrenbailey/jenkins-python:${inputs.params.version}
-                      - --context=jenkins-maven-python
+                      - --context=/workspace/workspace
                       - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                       - --cache=true
                       - --cache-dir=/workspace
@@ -167,7 +167,7 @@ pipelineConfig:
                     args:
                       - --dockerfile=Dockerfile.ruby
                       - --destination=docker.io/warrenbailey/jenkins-ruby:${inputs.params.version}
-                      - --context=jenkins-maven-ruby
+                      - --context=/workspace/workspace
                       - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                       - --cache=true
                       - --cache-dir=/workspace
@@ -180,7 +180,7 @@ pipelineConfig:
                     args:
                       - --dockerfile=Dockerfile.rust
                       - --destination=docker.io/warrenbailey/jenkins-rust:${inputs.params.version}
-                      - --context=jenkins-maven-rust
+                      - --context=/workspace/workspace
                       - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                       - --cache=true
                       - --cache-dir=/workspace
@@ -193,7 +193,7 @@ pipelineConfig:
                     args:
                       - --dockerfile=Dockerfile.scala
                       - --destination=docker.io/warrenbailey/jenkins-scala:${inputs.params.version}
-                      - --context=jenkins-maven-scala
+                      - --context=/workspace/workspace
                       - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                       - --cache=true
                       - --cache-dir=/workspace
@@ -211,7 +211,7 @@ pipelineConfig:
                 args:
                   - --dockerfile=Dockerfile.base
                   - --destination=docker.io/warrenbailey/jenkins-base:${inputs.params.version}
-                  - --context=jenkins-base
+                  - --context=/workspace/workspace
                   - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                   - --cache=true
                   - --cache-dir=/workspace
@@ -234,7 +234,7 @@ pipelineConfig:
                       args:
                         - --dockerfile=Dockerfile.csharp
                         - --destination=docker.io/warrenbailey/jenkins-csharp:${inputs.params.version}
-                        - --context=jenkins-csharp
+                        - --context=/workspace/workspace
                         - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                         - --cache=true
                         - --cache-dir=/workspace
@@ -247,7 +247,7 @@ pipelineConfig:
                       args:
                         - --dockerfile=Dockerfile.cwp
                         - --destination=docker.io/warrenbailey/jenkins-cwp:${inputs.params.version}
-                        - --context=jenkins-cwp
+                        - --context=/workspace/workspace
                         - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                         - --cache=true
                         - --cache-dir=/workspace
@@ -260,7 +260,7 @@ pipelineConfig:
                       args:
                         - --dockerfile=Dockerfile.elixir
                         - --destination=docker.io/warrenbailey/jenkins-elixir:${inputs.params.version}
-                        - --context=jenkins-elixir
+                        - --context=/workspace/workspace
                         - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                         - --cache=true
                         - --cache-dir=/workspace
@@ -273,7 +273,7 @@ pipelineConfig:
                       args:
                         - --dockerfile=Dockerfile.go
                         - --destination=docker.io/warrenbailey/jenkins-go:${inputs.params.version}
-                        - --context=jenkins-go
+                        - --context=/workspace/workspace
                         - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                         - --cache=true
                         - --cache-dir=/workspace
@@ -286,24 +286,24 @@ pipelineConfig:
                       args:
                         - --dockerfile=Dockerfile.gradle
                         - --destination=docker.io/warrenbailey/jenkins-gradle:${inputs.params.version}
-                        - --context=jenkins-gradle
+                        - --context=/workspace/workspace
                         - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                         - --cache=true
                         - --cache-dir=/workspace
                         - --skip-tls-verify-registry=jenkins-x-docker-registry.jx.svc.cluster.local:5000
-#              - name: build-and-push-javascript
-#                steps:
-#                    - agent:
-#                      image: rawlingsj/executor:dev40
-#                      command: /kaniko/executor
-#                      args:
-#                        - --dockerfile=Dockerfile.javascript
-#                        - --destination=docker.io/warrenbailey/jenkins-javascript:${inputs.params.version}
-#                        - --context=jenkins-javascript
-#                        - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
-#                        - --cache=true
-#                        - --cache-dir=/workspace
-#                        - --skip-tls-verify-registry=jenkins-x-docker-registry.jx.svc.cluster.local:5000
+              - name: build-and-push-javascript
+                steps:
+                    - agent:
+                      image: rawlingsj/executor:dev40
+                      command: /kaniko/executor
+                      args:
+                        - --dockerfile=Dockerfile.javascript
+                        - --destination=docker.io/warrenbailey/jenkins-javascript:${inputs.params.version}
+                        - --context=/workspace/workspace
+                        - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
+                        - --cache=true
+                        - --cache-dir=/workspace
+                        - --skip-tls-verify-registry=jenkins-x-docker-registry.jx.svc.cluster.local:5000
               - name: build-and-push-jenkins
                 steps:
                     - agent:
@@ -312,7 +312,7 @@ pipelineConfig:
                       args:
                         - --dockerfile=Dockerfile.jenkins
                         - --destination=docker.io/warrenbailey/jenkins-jenkins:${inputs.params.version}
-                        - --context=jenkins-jenkins
+                        - --context=/workspace/workspace
                         - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                         - --cache=true
                         - --cache-dir=/workspace
@@ -325,7 +325,7 @@ pipelineConfig:
                       args:
                         - --dockerfile=Dockerfile.maven
                         - --destination=docker.io/warrenbailey/jenkins-maven:${inputs.params.version}
-                        - --context=jenkins-maven
+                        - --context=/workspace/workspace
                         - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                         - --cache=true
                         - --cache-dir=/workspace
@@ -338,7 +338,7 @@ pipelineConfig:
                       args:
                         - --dockerfile=Dockerfile.maven-java11
                         - --destination=docker.io/warrenbailey/jenkins-maven-java11:${inputs.params.version}
-                        - --context=jenkins-maven-java11
+                        - --context=/workspace/workspace
                         - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                         - --cache=true
                         - --cache-dir=/workspace
@@ -351,7 +351,7 @@ pipelineConfig:
                       args:
                         - --dockerfile=Dockerfile.python
                         - --destination=docker.io/warrenbailey/jenkins-python:${inputs.params.version}
-                        - --context=jenkins-maven-python
+                        - --context=/workspace/workspace
                         - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                         - --cache=true
                         - --cache-dir=/workspace
@@ -364,7 +364,7 @@ pipelineConfig:
                       args:
                         - --dockerfile=Dockerfile.ruby
                         - --destination=docker.io/warrenbailey/jenkins-ruby:${inputs.params.version}
-                        - --context=jenkins-maven-ruby
+                        - --context=/workspace/workspace
                         - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                         - --cache=true
                         - --cache-dir=/workspace
@@ -377,7 +377,7 @@ pipelineConfig:
                       args:
                         - --dockerfile=Dockerfile.rust
                         - --destination=docker.io/warrenbailey/jenkins-rust:${inputs.params.version}
-                        - --context=jenkins-maven-rust
+                        - --context=/workspace/workspace
                         - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                         - --cache=true
                         - --cache-dir=/workspace
@@ -390,7 +390,7 @@ pipelineConfig:
                       args:
                         - --dockerfile=Dockerfile.scala
                         - --destination=docker.io/warrenbailey/jenkins-scala:${inputs.params.version}
-                        - --context=jenkins-maven-scala
+                        - --context=/workspace/workspace
                         - --cache-repo=jenkins-x-docker-registry.jx.svc.cluster.local:5000/
                         - --cache=true
                         - --cache-dir=/workspace
