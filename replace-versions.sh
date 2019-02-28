@@ -17,7 +17,7 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-declare -a arr=("maven")
+declare -a arr=(csharp cwp elixir go gradle javascript jenkins maven-java11 maven python ruby rust scala)
 
 ORG=warrenbailey
 TAG=$(cat VERSION)
