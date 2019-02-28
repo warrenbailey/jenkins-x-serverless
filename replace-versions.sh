@@ -19,8 +19,8 @@ set -o pipefail
 
 declare -a arr=(csharp cwp elixir go gradle javascript jenkins maven-java11 maven python ruby rust scala)
 
-ORG=warrenbailey
-TAG=$(cat VERSION)
+ORG=$1
+TAG=$2
 
 ## now loop through the above array
 for i in "${arr[@]}"
