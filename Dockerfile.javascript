@@ -1,4 +1,4 @@
-FROM JENKINS_BASE_TAG
+FROM warrenbailey/jenkins-base:1
 
 RUN curl -sL https://deb.nodesource.com/setup_9.x | bash - && \
 	apt-get install -y nodejs chromedriver chromium xvfb
