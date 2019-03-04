@@ -198,6 +198,18 @@ pipelineConfig:
                       - --cache=true
                       - --cache-dir=/workspace
                       - --skip-tls-verify-registry=jenkins-x-docker-registry.jx.svc.cluster.local:5000
+          - name: update-bot
+            steps:
+              - agent:
+                  image: jenkinxio:maven-builder
+                command: updatebot
+                args:
+                  - push-regex
+                  - -r
+                  - "jenkinsTag: (.*)"
+                  - -v
+                  - ${inputs.params.version}
+                  - jx-build-templates/values.yaml
     pullRequest:
       pipeline:
         agent:
@@ -224,18 +236,6 @@ pipelineConfig:
                 args:
                   - jenkinsxio
                   - ${inputs.params.version}
-          - name: update-bot
-            steps:
-              - agent:
-                image: jenkinxio:maven-builder
-                command: updatebot
-                args:
-                  - push-regex
-                  - -r
-                  - "jenkinsTag: (.*)"
-                  - -v
-                  - ${inputs.params.version}
-                  - jx-build-templates/values.yaml
           - name: build-all
             parallel:
               - name: build-and-push-csharp
