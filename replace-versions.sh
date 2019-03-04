@@ -29,7 +29,3 @@ do
 	sed -i.bak -e "s/FROM .*/FROM ${ORG}\/jenkins-base:${TAG}/" Dockerfile.${i}
 	rm Dockerfile.$i.bak
 done
-
-# if [ "release" == "${RELEASE}" ]; then
-#   updatebot push-regex -r "jenkinsTag: (.*)" -v ${TAG} jx-build-templates/values.yaml
-# fi

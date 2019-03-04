@@ -395,3 +395,15 @@ pipelineConfig:
                         - --cache=true
                         - --cache-dir=/workspace
                         - --skip-tls-verify-registry=jenkins-x-docker-registry.jx.svc.cluster.local:5000
+          - name: update-bot
+            steps:
+                - agent:
+                  image: jenkinxio:maven-builder
+                  command: updatebot
+                  args:
+                    - push-regex
+                    - -r
+                    - "jenkinsTag: (.*)"
+                    - -v
+                    - ${inputs.params.version}
+                    - jx-build-templates/values.yaml
