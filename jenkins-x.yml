@@ -6,11 +6,19 @@ pipelineConfig:
         agent:
           image: rawlingsj/executor:dev40
         stages:
-          - name: build-and-push-base
+          - name: git-setup
             steps:
               - agent:
-                  image: rawlingsj/executor:dev40
-                command: /kaniko/executor
+                  image: alpine/git:1.0.7
+                command: git
+                args:
+                  - config
+                  - --global
+                  - creditial.helper
+                  - store
+          - name: build-and-push-base
+            steps:
+              - command: /kaniko/executor
                 args:
                   - --dockerfile=Dockerfile.base
                   - --destination=docker.io/jenkinsxio/jenkins-base:${inputs.params.version}
@@ -201,7 +209,7 @@ pipelineConfig:
           - name: update-bot
             steps:
               - agent:
-                  image: jenkinsxio/builder-maven:0.1.263
+                  image: jenkinsxio/builder-maven
                 command: updatebot
                 args:
                   - push-regex
