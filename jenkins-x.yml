@@ -6,16 +6,16 @@ pipelineConfig:
         agent:
           image: rawlingsj/executor:dev40
         stages:
-          - name: git-setup-1
-            steps:
-              - agent:
-                  image: centos:7
-                command: git
-                args:
-                  - config
-                  - --global
-                  - creditial.helper
-                  - store
+#          - name: git-setup-1
+#            steps:
+#              - agent:
+#                  image: centos:7
+#                command: git
+#                args:
+#                  - config
+#                  - --global
+#                  - creditial.helper
+#                  - store
           - name: git-setup-2
             steps:
               - agent:
