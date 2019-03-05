@@ -6,26 +6,15 @@ pipelineConfig:
         agent:
           image: rawlingsj/executor:dev40
         stages:
-#          - name: git-setup-1
-#            steps:
-#              - agent:
-#                  image: centos:7
-#                command: git
-#                args:
-#                  - config
-#                  - --global
-#                  - creditial.helper
-#                  - store
-          - name: git-setup-2
+          - name: git-setup
             steps:
               - agent:
-                  image: centos:7
+                  image: rawlingsj/jx:dev136
                 command: jx
                 args:
                   - step
                   - git
                   - credentials
-                  - store
           - name: build-and-push-base
             steps:
               - command: /kaniko/executor
