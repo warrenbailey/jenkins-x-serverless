@@ -28,7 +28,7 @@ pipelineConfig:
                   - store
           - name: build-and-push-base
             steps:
-                command: /kaniko/executor
+              - command: /kaniko/executor
                 args:
                   - --dockerfile=Dockerfile.base
                   - --destination=docker.io/jenkinsxio/jenkins-base:${inputs.params.version}
