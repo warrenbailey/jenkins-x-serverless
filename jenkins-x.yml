@@ -201,7 +201,7 @@ pipelineConfig:
           - name: update-bot
             steps:
               - agent:
-                  image: jenkinxio:maven-builder
+                  image: jenkinsxio/builder-maven:0.1.263
                 command: updatebot
                 args:
                   - push-regex
