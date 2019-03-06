@@ -25,6 +25,7 @@ pipelineConfig:
                   - step
                   - git
                   - credentials
+                  - -o /workspace/workspace/git/credentials
 #          - name: build-and-push-base
 #            steps:
 #              - command: /kaniko/executor
@@ -216,6 +217,9 @@ pipelineConfig:
 #                      - --cache-dir=/workspace
 #                      - --skip-tls-verify-registry=jenkins-x-docker-registry.jx.svc.cluster.local:5000
           - name: update-bot
+            environment:
+                name: XDG_CONFIG_HOME
+                value: /workspace/workspace
             steps:
               - agent:
                   image: jenkinsxio/builder-maven
