@@ -225,14 +225,28 @@ pipelineConfig:
                   image: centos:7
                 command: echo
                 args:
-                  - ${XDG_CONFIG_HOME}
+                  - $XDG_CONFIG_HOME
           - name: cat
             steps:
               - agent:
                   image: centos:7
                 command: cat
                 args:
-                  - ${XDG_CONFIG_HOME}/git/credentials
+                  - /workspace/xdg_config/git/credentials
+          - name: cat-2
+            steps:
+              - agent:
+                  image: centos:7
+                command: cat
+                args:
+                  - /workspace/workspace/xdg_config/git/credentials
+          - name: ls
+            steps:
+              - agent:
+                  image: centos:7
+                command: ls
+                args:
+                  - -laR
           - name: update-bot
             environment:
               - name: XDG_CONFIG_HOME
