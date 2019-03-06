@@ -218,7 +218,7 @@ pipelineConfig:
 #                      - --skip-tls-verify-registry=jenkins-x-docker-registry.jx.svc.cluster.local:5000
           - name: update-bot
             environment:
-                name: XDG_CONFIG_HOME
+              - name: XDG_CONFIG_HOME
                 value: /workspace/workspace
             steps:
               - agent:
