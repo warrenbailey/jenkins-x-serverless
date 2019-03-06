@@ -219,6 +219,13 @@ pipelineConfig:
 #                      - --cache=true
 #                      - --cache-dir=/workspace
 #                      - --skip-tls-verify-registry=jenkins-x-docker-registry.jx.svc.cluster.local:5000
+          - name: echo
+            steps:
+              - agent:
+                  image: centos:7
+                command: echo
+                args:
+                  - $XDG_CONFIG_HOME
           - name: cat
             steps:
               - agent:
