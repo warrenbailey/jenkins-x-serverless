@@ -7,7 +7,7 @@ pipelineConfig:
           image: rawlingsj/executor:dev40
         environment:
           - name: XDG_CONFIG_HOME
-            value: /workspace/xdg_config
+            value: /workspace/workspace/xdg_config
         stages:
           - name: git-setup
             steps:
@@ -227,13 +227,6 @@ pipelineConfig:
                 args:
                   - $XDG_CONFIG_HOME
           - name: cat
-            steps:
-              - agent:
-                  image: centos:7
-                command: cat
-                args:
-                  - /workspace/xdg_config/git/credentials
-          - name: cat-2
             steps:
               - agent:
                   image: centos:7
