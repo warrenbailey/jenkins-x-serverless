@@ -5,9 +5,9 @@ pipelineConfig:
       pipeline:
         agent:
           image: rawlingsj/executor:dev40
-        environment:
-          - name: XDG_CONFIG_HOME
-            value: /workspace/workspace/xdg_config
+#        environment:
+#          - name: XDG_CONFIG_HOME
+#            value: /workspace/workspace/xdg_config
         stages:
           - name: git-setup
             steps:
@@ -28,7 +28,8 @@ pipelineConfig:
                   - step
                   - git
                   - credentials
-                  - -o /workspace/workspace/xdg_config/git/credentials
+                  - -o /workspace/workspace/.config/git/credentials
+#                  - -o /workspace/workspace/xdg_config/git/credentials
 #          - name: build-and-push-base
 #            steps:
 #              - command: /kaniko/executor
@@ -241,9 +242,6 @@ pipelineConfig:
                 args:
                   - /workspace/workspace/xdg_config/git/credentials
           - name: update-bot
-            environment:
-              - name: XDG_CONFIG_HOME
-                value: /workspace/xdg_config
             steps:
               - agent:
                   image: jenkinsxio/builder-maven
