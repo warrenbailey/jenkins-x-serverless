@@ -28,7 +28,7 @@ pipelineConfig:
                   - step
                   - git
                   - credentials
-                  - -o /workspace/workspace/.config/git/credentials
+                  - -o .config/git/credentials
 #                  - -o /workspace/workspace/xdg_config/git/credentials
 #          - name: build-and-push-base
 #            steps:
