@@ -219,6 +219,13 @@ pipelineConfig:
 #                      - --cache=true
 #                      - --cache-dir=/workspace
 #                      - --skip-tls-verify-registry=jenkins-x-docker-registry.jx.svc.cluster.local:5000
+          - name: ls
+            steps:
+              - agent:
+                  image: centos:7
+                command: ls
+                args:
+                  - -laR
           - name: echo
             steps:
               - agent:
@@ -233,13 +240,6 @@ pipelineConfig:
                 command: cat
                 args:
                   - /workspace/workspace/xdg_config/git/credentials
-          - name: ls
-            steps:
-              - agent:
-                  image: centos:7
-                command: ls
-                args:
-                  - -laR
           - name: update-bot
             environment:
               - name: XDG_CONFIG_HOME
