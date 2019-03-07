@@ -28,7 +28,7 @@ pipelineConfig:
                   - step
                   - git
                   - credentials
-                  -o /workspace/workspace/xdg_config/git/credentials
+                  - -o /workspace/workspace/git/credentials
 #          - name: build-and-push-base
 #            steps:
 #              - command: /kaniko/executor
